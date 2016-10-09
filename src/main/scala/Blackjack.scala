@@ -1,11 +1,18 @@
 object Blackjack {
 
   def handScore(cs: Seq[Int]): Int = {
-    if (cs == Seq(1,1))
-      22
-    else if (cs == Seq(2, 2))
-      4
+    def cardScore(c: Int): Int = {
+      if (c == 1)
+        11
+      else if (c >= 10)
+        10
+      else
+        c
+    }
+
+    if (cs.isEmpty)
+      0
     else
-      20
+      cardScore(cs.head) + handScore(cs.tail)
   }
 }
