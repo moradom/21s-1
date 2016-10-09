@@ -10,6 +10,10 @@ class BlackjackSpec extends BaseSpec {
     "get 4 points for 2 dukes" in {
       handScore(Seq(2, 2)) shouldBe 4
     }
+
+    "get 20 points for 2 queens" in {
+      handScore(Seq(12, 12)) shouldBe 20
+    }
   }
 }
 
