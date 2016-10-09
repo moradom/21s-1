@@ -15,5 +15,17 @@ class BlackjackSpec extends BaseSpec {
       handScore(Seq(12, 12)) shouldBe 20
     }
   }
+
+  "deck" should {
+    "return 2 cards from the deck together with the new deck" in {
+      val deck = Deck()
+
+      val (resultCards, resultDeck) = deck.giveCards(2)
+
+      resultCards shouldBe deck.cards.take(2)
+      resultDeck.cards shouldBe deck.cards.drop(2)
+    }
+  }
+
 }
 
