@@ -27,5 +27,13 @@ class BlackjackSpec extends BaseSpec {
     }
   }
 
+  "blackjack" should {
+    "check if either player has blackjack (21) with their initial hand and wins the game" in {
+      val blackjack = Blackjack(Deck(Seq(1,10,1,2,3,4,5,6,7)))
+
+      blackjack.isSamWinner shouldBe true
+    }
+  }
+
 }
 

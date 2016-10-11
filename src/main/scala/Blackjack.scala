@@ -1,12 +1,23 @@
 import scala.util.Random
 
-case class Deck(cards: Seq[Int] = Random.shuffle(
-                for {
-                  suit <- 1 to 4
-                  card <- 1 to 13
-                } yield card)) {
+
+case class Deck(cards: Seq[Int] = Deck.defaultDeck) {
 
   def giveCards(i: Int) = (cards.take(i), this.copy(cards = cards.drop(i)))
+
+}
+
+object Deck {
+  def defaultDeck = Random.shuffle(
+    for {
+      suit <- 1 to 4
+      card <- 1 to 13
+    } yield card)
+}
+
+case class Blackjack(deck: Deck = Deck()) {
+
+  def isSamWinner = true
 
 }
 
@@ -27,4 +38,5 @@ object Blackjack {
     else
       cardScore(cs.head) + handScore(cs.tail)
   }
+
 }
